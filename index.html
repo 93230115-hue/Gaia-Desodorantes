@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gaia | Desodorantes Biodegradables </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Satisfy&display=swap" rel="stylesheet">
+
+    <script>
+        const ecoConfig = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#4ade80',
+                        'eco-dark': '#14532d',
+                        'eco-light': '#f0fdf4',
+                        'soil': '#78350f',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        script: ['Satisfy', 'cursive'],
+                    }
+                }
+            }
+        };
+        if (typeof tailwind !== 'undefined') {
+            tailwind.config = ecoConfig;
+        } else {
+            window.addEventListener('load', function() {
+                if (typeof tailwind !== 'undefined') {
+                    tailwind.config = ecoConfig;
+                }
+            });
+        }
+    </script>
+    <script>
+        let cartCount = 0;
+        function addToCart(id) {
+            cartCount++;
+            const counter = document.getElementById('cart-count');
+            counter.innerText = cartCount;
+            counter.classList.remove('scale-0');
+            counter.classList.add('scale-125');
+            setTimeout(() => counter.classList.remove('scale-125'), 200);
+        }
+        function toggleCart() {
+            alert("Aquí estara su carrito de compras.");
+        }
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.add("hidden");
+            }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("text-eco-green", "border-b-2", "border-eco-green", "font-bold");
+                tablinks[i].classList.add("text-gray-500");
+            }
+            document.getElementById(tabName).classList.remove("hidden");
+            evt.currentTarget.classList.remove("text-gray-500");
+            evt.currentTarget.classList.add("text-eco-green", "border-b-2", "border-eco-green", "font-bold");
+        }
+    </script>
+    <style>
+        .scent-card:hover {
+            transform: translateY(-5px);
+        }
+        #cart-sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        .hidden-sidebar {
+            transform: translateX(100%);
+        }
+        .visible-sidebar {
+            transform: translateX(0);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #02b274;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #065602;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        /* Animación Fade In */
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800 font-sans">
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-leaf text-eco-green text-3xl mr-2"></i>
+                    <span class="font-bold text-2xl text-eco-dark tracking-tight"> Gaia </span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-eco-green transition">Inicio</a>
+                    <a href="#beneficios" class="text-gray-600 hover:text-eco-green transition">Beneficios</a>
+                    <a href="#tienda" class="text-gray-600 hover:text-eco-green transition">Tienda</a>
+                    <a href="#nosotros" class="text-gray-600 hover:text-eco-green transition">Nosotros</a>
+                    <a href="#contacto" class="text-gray-600 hover:text-eco-green transition">Contactanos</a>
+                </div>
+                <div class="relative cursor-pointer" onclick="toggleCart()">
+                    <i class="fa-solid fa-shopping-bag text-2xl text-eco-dark hover:text-eco-green transition"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center transform scale-0 transition-transform duration-200">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-eco-light overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 opacity-20">
+            <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#4ade80" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-5.3C93.5,8.6,82.2,21.5,70.6,31.2C59,40.9,47.1,47.4,35.6,52.4C24.1,57.4,13,60.9,-0.3,61.4C-13.6,61.9,-24.5,59.4,-36.4,54.7C-48.3,50,-61.2,43.1,-70.5,32.3C-79.8,21.5,-85.5,6.8,-83.4,-7.1C-81.3,-21,-71.4,-34.1,-60.1,-43.5C-48.8,-52.9,-36.1,-58.6,-23.4,-67.2C-10.7,-75.8,2,-87.3,15.6,-88.8C29.2,-90.3,43.7,-81.8,44.7,-76.4Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <span class="text-eco-green font-bold uppercase tracking-wider text-sm">100% Natural & Biodegradable </span>
+                    <h1 class="mt-4 text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                        Frescura que cuida <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-500"> cada tipo de piel y al planeta </span>
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-600 max-w-lg mx-auto lg:mx-0">
+                        Olvídate del aluminio y el daño a tu piel. Nuestros desodorantes en barra están hechos con ingredientes naturales.
+                    </p>
+                    <div class="mt-8 flex justify-center lg:justify-start gap-4">
+                        <a href="#tienda" class="bg-eco-dark text-white px-8 py-3 rounded-full font-semibold hover:bg-green-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            Comprar Ahora
+                        </a>
+                        <a href="#beneficios" class="border-2 border-eco-dark text-eco-dark px-8 py-3 rounded-full font-semibold hover:bg-eco-dark hover:text-white transition">
+                            Conocer más
+                        </a>
+                    </div>
+                </div>
+                <!-- Imagen Hero Generada con CSS/SVG placeholder -->
+                <div class="relative flex justify-center">
+                    <div class="bg-white p-6 rounded-3xl shadow-2xl relative z-10 max-w-sm w-full transform rotate-3 hover:rotate-0 transition duration-500">
+                        <div class="bg-green-100 rounded-2xl h-64 flex items-center justify-center mb-4 overflow-hidden relative">
+                             <!-- Logo de la empresa -->
+                            <img src="WhatsApp Image 2026-02-03 at 6.36.49 PM.jpeg" alt="EcoScent Logo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-800"></h3>
+                                <p class="text-gray-500 text-sm"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section id="beneficios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900">¿Por qué elegir Gaia?</h2>
+                <div class="w-24 h-1 bg-eco-green mx-auto mt-4 rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
+                <!-- Beneficio 1 -->
+                <div class="text-center p-8 rounded-2xl bg-stone-50 hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-smog text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Transpiración natural</h3>
+                    <p class="text-gray-600">No bloquea los poros ni las glándulas sudoríparas, permitiendo que el cuerpo sude y elimine toxinas de forma natural, a diferencia de los antitranspirantes con aluminio.</p>
+                </div>
+                <!-- Beneficio 2 -->
+                <div class="text-center p-8 rounded-2xl bg-stone-50 hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Plus left -->
+                            <line x1="40" y1="30" x2="40" y2="50" stroke="#16a34a" stroke-width="6" stroke-linecap="round"/>
+                            <line x1="30" y1="40" x2="50" y2="40" stroke="#16a34a" stroke-width="6" stroke-linecap="round"/>
+                            <!-- Circle with check -->
+                            <circle cx="100" cy="50" r="35" fill="none" stroke="#16a34a" stroke-width="6"/>
+                            <path d="M 80 50 L 95 65 L 125 35" fill="none" stroke="#16a34a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Plus right -->
+                            <line x1="160" y1="30" x2="160" y2="50" stroke="#16a34a" stroke-width="6" stroke-linecap="round"/>
+                            <line x1="150" y1="40" x2="170" y2="40" stroke="#16a34a" stroke-width="6" stroke-linecap="round"/>
+                            <!-- Wave line -->
+                            <path d="M 30 95 Q 45 85 60 95 T 90 95 T 120 95 T 150 95 L 170 95" fill="none" stroke="#16a34a" stroke-width="5" stroke-linecap="round"/>
+                            <!-- Top dots -->
+                            <circle cx="50" cy="130" r="5" fill="#16a34a"/>
+                            <circle cx="75" cy="130" r="5" fill="#16a34a"/>
+                            <circle cx="100" cy="130" r="5" fill="#16a34a"/>
+                            <circle cx="125" cy="130" r="5" fill="#16a34a"/>
+                            <circle cx="150" cy="130" r="5" fill="#16a34a"/>
+                            <!-- Bottom dots -->
+                            <circle cx="60" cy="150" r="4" fill="#16a34a"/>
+                            <circle cx="85" cy="150" r="4" fill="#16a34a"/>
+                            <circle cx="110" cy="150" r="4" fill="#16a34a"/>
+                            <circle cx="135" cy="150" r="4" fill="#16a34a"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Menos irritaciones y alergias:</h3>
+                    <p class="text-gray-600"> Ideal para pieles sensibles, reduce rojeces, picor o inflamación después de la depilación o en axilas delicadas.</p>
+                </div>
+                <!-- Beneficio 3 -->
+                <div class="text-center p-8 rounded-2xl bg-stone-50 hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-droplet text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Evitar exposición a químicos potencialmente dañinos: </h3>
+                    <p class="text-gray-600">Libre de aluminio, parabenos, fragancias sintéticas y disruptores endocrinos, lo que da mayor tranquilidad.</p>
+                </div>
+                <!-- Beneficio 4 -->
+                <div class="text-center p-8 rounded-2xl bg-stone-50 hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-leaf text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Neutraliza olores de forma efectiva:</h3>
+                    <p class="text-gray-600">Controla las bacterias causantes del mal olor sin tapar el sudor, ofreciendo frescura duradera con aromas naturales.</p>
+                </div>
+                <!-- Beneficio 5 -->
+                <div class="text-center p-8 rounded-2xl bg-stone-50 hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-heart text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Cuida la piel: </h3>
+                    <p class="text-gray-600">Este contendrá ingredientes hidratantes como aceite de coco o aloe vera, dejando la piel suave y nutrida. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tienda / Productos -->
+    <section id="tienda" class="py-20 bg-eco-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-eco-green font-bold text-sm uppercase">Nuestros Productos</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-2">Elige el Aroma</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Cada barra rinde hasta 2 meses de uso diario. Elige el que mejor te describa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="product-grid">
+                <!-- Los productos se generarán aquí con JavaScript para facilitar el manejo, pero dejo la estructura base comentada -->
+                <!-- Product 1: Lavanda -->
+                <div class="scent-card bg-white rounded-2xl shadow-md overflow-hidden flex flex-col h-full">
+                    <div class="h-48 bg-purple-100 flex items-center justify-center relative">
+                        <i class="fa-solid fa-spray-can text-6xl text-purple-300"></i>
+                        <span class="absolute top-4 right-4 bg-white px-2 py-1 rounded text-xs font-bold text-purple-600">Relax</span>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900">Lavanda</h3>
+                        <p class="text-sm text-gray-500 mt-1">Calmante</p>
+                        <p class="mt-4 text-gray-600 text-sm">Ideal para pieles sensibles. Un aroma que reduce el enrojecimiento.</p>
+                    </div>
+                    <div class="px-6 pb-6 flex justify-between items-center mt-auto">
+                        <span class="text-2xl font-bold text-gray-800">$30.00</span>
+                        <button onclick="addToCart(1)" class="w-10 h-10 rounded-full bg-eco-dark text-white flex items-center justify-center hover:bg-green-700 transition shadow-lg">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2: Cítricos -->
+                <div class="scent-card bg-white rounded-2xl shadow-md overflow-hidden flex flex-col h-full">
+                    <div class="h-48 bg-orange-100 flex items-center justify-center relative">
+                        <i class="fa-solid fa-sun text-6xl text-orange-300"></i>
+                        <span class="absolute top-4 right-4 bg-white px-2 py-1 rounded text-xs font-bold text-orange-600">Energía</span>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900">Naranja, menta & Lima</h3>
+                        <p class="text-sm text-gray-500 mt-1">Fresco y vibrante</p>
+                        <p class="mt-4 text-gray-600 text-sm">Energía pura para empezar el día. Notas ácidas y refrescantes.</p>
+                    </div>
+                    <div class="px-6 pb-6 flex justify-between items-center mt-auto">
+                        <span class="text-2xl font-bold text-gray-800">$30.00</span>
+                        <button onclick="addToCart(2)" class="w-10 h-10 rounded-full bg-eco-dark text-white flex items-center justify-center hover:bg-green-700 transition shadow-lg">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3: Eucalipto -->
+                <div class="scent-card bg-white rounded-2xl shadow-md overflow-hidden flex flex-col h-full">
+                    <div class="h-48 bg-teal-100 flex items-center justify-center relative">
+                        <i class="fa-solid fa-leaf text-6xl text-teal-300"></i>
+                        <span class="absolute top-4 right-4 bg-white px-2 py-1 rounded text-xs font-bold text-teal-600">Fresco</span>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900">Menta</h3>
+                        <p class="text-sm text-gray-500 mt-1">Intenso y herbal</p>
+                        <p class="mt-4 text-gray-600 text-sm">Máxima protección para días activos o deportivos. Sensación fría.</p>
+                    </div>
+                    <div class="px-6 pb-6 flex justify-between items-center mt-auto">
+                        <span class="text-2xl font-bold text-gray-800">$30.00</span>
+                        <button onclick="addToCart(3)" class="w-10 h-10 rounded-full bg-eco-dark text-white flex items-center justify-center hover:bg-green-700 transition shadow-lg">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4: Neutro/Coco -->
+                <div class="scent-card bg-white rounded-2xl shadow-md overflow-hidden flex flex-col h-full">
+                    <div class="h-48 bg-amber-100 flex items-center justify-center relative">
+                        <i class="fa-solid fa-snowflake text-6xl text-amber-300"></i>
+                        <span class="absolute top-4 right-4 bg-white px-2 py-1 rounded text-xs font-bold text-amber-600">Suave</span>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900">Coco & Vainilla</h3>
+                        <p class="text-sm text-gray-500 mt-1">Dulce y cremoso</p>
+                        <p class="mt-4 text-gray-600 text-sm">Un aroma cálido y reconfortante. Ultra hidratante para axilas secas.</p>
+                    </div>
+                    <div class="px-6 pb-6 flex justify-between items-center mt-auto">
+                        <span class="text-2xl font-bold text-gray-800">$30.00</span>
+                        <button onclick="addToCart(4)" class="w-10 h-10 rounded-full bg-eco-dark text-white flex items-center justify-center hover:bg-green-700 transition shadow-lg">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Identidad Corporativa (Pestañas) -->
+    <section id="nosotros" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-eco-green font-bold text-sm uppercase">Sobre Nosotros</span>
+                <h2 class="text-3xl font-bold text-gray-900 mt-2">Como empezamos </h2>
+                <div class="w-24 h-1 bg-eco-green mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Navegación de Pestañas -->
+            <div class="flex flex-wrap justify-center border-b border-gray-200 mb-12">
+                <button onclick="openTab(event, 'esencia')" class="tab-link px-6 py-4 text-eco-green border-b-2 border-eco-green font-bold focus:outline-none transition-colors duration-300">
+                    Misión y Visión
+                </button>
+                <button onclick="openTab(event, 'filosofia')" class="tab-link px-6 py-4 text-gray-500 hover:text-eco-green focus:outline-none transition-colors duration-300">
+                    Giro, Filosofía y Valores
+                </button>
+                <button onclick="openTab(event, 'empresa')" class="tab-link px-6 py-4 text-gray-500 hover:text-eco-green focus:outline-none transition-colors duration-300">
+                    La Empresa
+                </button>
+                <button onclick="openTab(event, 'ventajas')" class="tab-link px-6 py-4 text-gray-500 hover:text-eco-green focus:outline-none transition-colors duration-300">
+                    Por qué Elegirnos
+                </button>
+            </div>
+
+            <!-- Contenido Pestaña 1: Esencia -->
+            <div id="esencia" class="tab-content animate-fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="bg-eco-light p-8 rounded-2xl shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-eco-green shadow-sm mr-4">
+                                <i class="fa-solid fa-bullseye text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Misión</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            Proporcionar una alternativa 100% natural, accesible y efectiva para el control del olor corporal, eliminando el uso de sales de aluminio y plasticos innecesarios, mientras se cuida la salud de la piel e incluso del planeta con ingredientes simples, biodegradables y de origen responsable.
+                        </p>
+                    </div>
+                    <div class="bg-white border-2 border-eco-light p-8 rounded-2xl shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-eco-green rounded-full flex items-center justify-center text-white shadow-sm mr-4">
+                                <i class="fa-solid fa-eye text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Visión</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            Ser la opción preferida y cotidiana a nivel nacional para personas que buscan desodorantes en general, así inspirando un cambio global hacia rutinas de higiene limpias, conscientes y libres de tóxicos, contribuyendo así a reducir el desperdicio de envases plásticos y la contaminación por los cosméticos convencionales para que en unos años el uso de desodorante natural se vuelve algo rutinario y no algo opcional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido Pestaña 2: Filosofía y Valores -->
+            <div id="filosofia" class="tab-content hidden animate-fade-in">
+                <div class="space-y-8">
+                    <!-- El Giro -->
+                    <div class="bg-eco-green text-white p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-4">El Giro</h3>
+                        <p class="text-lg leading-relaxed">La empresa es de carácter comercial y productivo con un enfoque social, ambiental y de bienestar integral. Se dedica al desarrollo, elaboración  y comercialización de desodorantes ecoloógicos, saludables y accesibles, elaborados a partir de ingredientes naturales y procesos responsables con el medio ambiente...</p>
+                    </div>
+
+                    <!-- Filosofía y Valores -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-1 bg-eco-dark text-white p-8 rounded-2xl flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold mb-4 border-b border-green-700 pb-2">Nuestra Filosofía</h3>
+                            <p class="italic text-lg mb-4">"la verdadera belleza y bienestar vienen de volver a lo esencial, reconectar con ingredientes que la naturaleza nos brinda."</p>
+                            <p class="text-green-100 text-sm">En lugar de depender de fórmulas industriales que sean complejas y tóxicas, además de que dañan al medio ambiente y a la piel. Estamos convencidos de que lo logramos con la honestidad que le brindamos tanto a nuestros clientes como a nuestros empleados, además, manteniendo un ambiente laboral bastante sano y cómodo para todos nuestros empleados.</p>
+                        </div>
+                        <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Valores -->
+                            <div class="p-6 bg-stone-50 rounded-xl">
+                                <i class="fa-solid fa-hand-holding-heart text-eco-green text-3xl mb-3"></i>
+                                <h4 class="font-bold text-lg mb-2">Transparencia:</h4>
+                                <p class="text-sm text-gray-600">Todos los ingredientes son nombrados sin excepción ni secretos.</p>
+                            </div>
+                            <div class="p-6 bg-stone-50 rounded-xl">
+                                <i class="fa-solid fa-seedling text-eco-green text-3xl mb-3"></i>
+                                <h4 class="font-bold text-lg mb-2">Sostenibilidad Real</h4>
+                                <p class="text-sm text-gray-600">Ingredientes biodegradables, cero plásticos de un solo uso y mínima huella ecológica.</p>
+                            </div>
+                            <div class="p-6 bg-stone-50 rounded-xl">
+                                <i class="fa-solid fa-users text-eco-green text-3xl mb-3"></i>
+                                <h4 class="font-bold text-lg mb-2">Priorizar la salud:</h4>
+                                <p class="text-sm text-gray-600">Priorizar la piel sensible, por lo que lo logramos evitando irritantes comunes usamos óxido de zinc para calma y protección del cliente.</p>
+                            </div>
+                            <div class="p-6 bg-stone-50 rounded-xl">
+                                <i class="fa-solid fa-flask text-eco-green text-3xl mb-3"></i>
+                                <h4 class="font-bold text-lg mb-2">Efectividad honesta:</h4>
+                                <p class="text-sm text-gray-600">En Gaia nos aseguramos de no ocultar que en los primero días hay un periodo de adaptación y ofrecemos ajustes según el clima.</p>
+                            </div>
+                            <div class="p-6 bg-stone-50 rounded-xl justify-self-center mx-auto text-center">
+                                <i class="fa-solid fa-award text-eco-green text-3xl mb-3"></i>
+                                <h4 class="font-bold text-lg mb-2">Trato justo y respetuoso:</h4>
+                                <p class="text-sm text-gray-600">Valoramos a cada trabajador como persona, no explotarlo laboralmente, garantizando un trato justo y digno libre de cualquier discriminacion o desigualdad.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido Pestaña 3: Empresa -->
+            <div id="empresa" class="tab-content hidden animate-fade-in">
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                   
+                    <div class="p-8 bg-stone-50">
+                        <h3 class="text-xl font-bold text-center mb-8">Organigrama Institucional</h3>
+                        <div class="flex justify-center">
+                            <img src="assets/images/organigrama.png" alt="Organigrama Institucional" class="max-w-full h-auto rounded-lg shadow-md" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido Pestaña 4: Justificación y Ventajas -->
+            <div id="ventajas" class="tab-content hidden animate-fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                     <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Justificación del Proyecto</h3>
+                        <p class="text-gray-600 mb-4">
+                            Los desodorantes convencionales, especialmente los antitranspirantes con sales de aluminio, contribuyen a la contaminación ambiental (a través de envases plásticos no reciclables y químicos que persisten en el agua) y plantean riesgos potenciales para la salud, como irritaciones cutáneas o acumulación de metales en el cuerpo (aunque la evidencia científica no confirma vínculos directos con enfermedades graves como el cáncer). A diferencia de un desodorante ecológico libre de aluminio que promueve alternativas naturales, reduce la huella ecológica y fomenta el emprendimiento sostenible. Elegimos este tema por su relevancia en la vida diaria: millones de personas usan desodorantes diariamente, lo que multiplica el impacto positivo si se adopta una versión eco-amigable. Además, se alinea con el objetivo del proyecto de aminorar la huella antropogénica, ya que aborda la producción irresponsable en la industria cosmética.
+                        </p>
+                        <p class="text-gray-600">
+                        </p>
+                     </div>
+                     <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Ventajas Competitivas</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                    
+                            
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check-circle text-eco-green mt-1 mr-3"></i>
+                                <div>
+                                    <span class="font-bold text-gray-800">Costo-Beneficio:</span>
+                                    <p class="text-sm text-gray-600">Una barra equivale a 3 aerosoles tradicionales. Ahorras dinero y reduces basura.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check-circle text-eco-green mt-1 mr-3"></i>
+                                <div>
+                                    <span class="font-bold text-gray-800">Personalización:</span>
+                                    <p class="text-sm text-gray-600">Ofrecemos suscripciones personalizadas donde puedes mezclar aromas en cada envío.</p>
+                                </div>
+                            </li>
+                        </ul>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-stone-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center mb-4">
+                        <i class="fa-solid fa-leaf text-eco-green text-2xl mr-2"></i>
+                        <span class="font-bold text-xl">EcoScent</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">"Eslogan"</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Enlaces</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#nosotros" class="hover:text-eco-green transition">Sobre Nosotros</a></li>
+                        <li><a href="#tienda" class="hover:text-eco-green transition">Tienda</a></li>
+                        <li><a href="#" class="hover:text-eco-green transition">Política de Envíos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Legal</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-eco-green transition">Aviso de Privacidad</a></li>
+                        <li><a href="#" class="hover:text-eco-green transition">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Boletín</h4>
+                    <p class="text-gray-400 text-sm mb-4">Recibe ofertas y tips ecológicos.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Tu correo" class="bg-gray-800 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-eco-green w-full">
+                        <button class="bg-eco-green text-white px-4 py-2 rounded-r-lg hover:bg-green-600 transition">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">&copy; 2023 EcoScent Natural S.A. de C.V. Todos los derechos reservados.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
